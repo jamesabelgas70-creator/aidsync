@@ -1,0 +1,47 @@
+================================================================================
+                    AIDSYNC - START HERE
+================================================================================
+
+If you're getting "JavaFX runtime components are missing" error:
+
+================================================================================
+QUICK FIX (Try This First):
+================================================================================
+
+1. Open Command Prompt in the AIDSYNC folder
+2. Run: troubleshoot.bat
+3. Wait for it to finish
+4. Try running: run-direct.bat
+
+================================================================================
+ALTERNATIVE: Complete Setup
+================================================================================
+
+1. Open Command Prompt in the AIDSYNC folder
+2. Run: setup-and-run.bat
+3. Close and reopen your IDE
+4. Press F5 to run
+
+================================================================================
+IF STILL NOT WORKING:
+================================================================================
+
+1. Run: check-setup.bat
+   (This shows exactly what's wrong)
+
+2. Try: run-direct.bat
+   (This bypasses IDE - if this works, problem is IDE config)
+
+3. See: EMERGENCY_FIX.txt
+   (Step-by-step troubleshooting guide)
+
+================================================================================
+IMPORTANT NOTES:
+================================================================================
+
+- Each machine needs to run setup ONCE
+- Close and reopen IDE after setup
+- If run-direct.bat works but IDE doesn't, run: fix-ide-config.bat
+
+================================================================================
+

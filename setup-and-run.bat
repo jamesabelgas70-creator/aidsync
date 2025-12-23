@@ -4,78 +4,99 @@ echo ========================================
 echo AIDSYNC 2.0 - Setup and Run
 echo ========================================
 echo.
+echo This script will:
+echo   1. Check Java and Maven
+echo   2. Download all dependencies (including JavaFX)
+echo   3. Compile the project
+echo   4. Set up IDE configuration
+echo   5. Run the application
+echo.
+pause
 
 REM Check Java
+echo [1/5] Checking Java...
 java -version >nul 2>&1
 if errorlevel 1 (
-    echo [ERROR] Java is not installed or not in PATH
-    echo Please install Java 11 or higher
+    echo    [ERROR] Java is not installed or not in PATH
+    echo    Please install Java 11 or higher from https://adoptium.net/
     pause
     exit /b 1
 )
-echo [OK] Java found
+echo    [OK] Java found
+java -version 2>&1 | findstr /C:"version"
 
 REM Check for Maven
+echo.
+echo [2/5] Checking Maven...
 mvn -version >nul 2>&1
 if errorlevel 1 (
-    echo [WARNING] Maven not found in PATH
-    echo Attempting to download dependencies using alternative method...
-    goto :download_deps_manual
-)
-
-echo [OK] Maven found
-echo.
-echo Downloading dependencies...
-call mvn dependency:resolve -q
-if errorlevel 1 (
-    echo [ERROR] Failed to download dependencies
+    echo    [ERROR] Maven not found in PATH
+    echo.
+    echo    Please install Maven:
+    echo    1. Download from: https://maven.apache.org/download.cgi
+    echo    2. Extract to a folder (e.g., C:\Program Files\Apache\maven)
+    echo    3. Add Maven's bin folder to your PATH
+    echo    4. Restart Command Prompt
+    echo.
+    echo    Or run: troubleshoot.bat (for automated fixes)
     pause
     exit /b 1
 )
-echo [OK] Dependencies downloaded
+echo    [OK] Maven found
+mvn -version 2>&1 | findstr /C:"Apache Maven"
 
-:compile
+REM Download dependencies
 echo.
-echo Compiling project...
-call mvn compile -q
+echo [3/5] Downloading dependencies (this may take a few minutes)...
+call mvn dependency:resolve
 if errorlevel 1 (
-    echo [ERROR] Compilation failed
+    echo    [ERROR] Failed to download dependencies
+    echo    Check your internet connection and try again
     pause
     exit /b 1
 )
-echo [OK] Project compiled
+echo    [OK] Dependencies downloaded
 
-:run
+REM Compile
 echo.
-echo Setting up IDE configuration...
+echo [4/5] Compiling project...
+call mvn compile
+if errorlevel 1 (
+    echo    [ERROR] Compilation failed
+    echo    Check the error messages above
+    pause
+    exit /b 1
+)
+echo    [OK] Project compiled
+
+REM Setup IDE config
+echo.
+echo [5/5] Setting up IDE configuration...
 powershell -ExecutionPolicy Bypass -File setup-ide-run.ps1
 if errorlevel 1 (
-    echo [WARNING] IDE configuration setup had issues, but continuing...
-    echo [INFO] You can run 'setup-ide-run.ps1' manually later
+    echo    [WARNING] IDE configuration setup had issues
+    echo    [INFO] This is OK if you're not using an IDE
+    echo    [INFO] You can run 'fix-ide-config.bat' later if needed
+) else (
+    echo    [OK] IDE configuration created
 )
-echo.
-echo ========================================
-echo Starting AIDSYNC Application...
-echo ========================================
-echo.
-echo [INFO] If running from IDE, make sure to:
-echo   1. Close and reopen the IDE
-echo   2. Or run 'setup-ide-run.ps1' to update IDE config
-echo.
-call run-javafx.bat
-goto :end
 
-:download_deps_manual
+REM Run
 echo.
-echo [INFO] Please install Maven or run 'mvn dependency:resolve' manually
-echo You can download Maven from: https://maven.apache.org/download.cgi
+echo ========================================
+echo Setup Complete!
+echo ========================================
 echo.
-echo Alternatively, you can download JavaFX SDK manually from:
-echo https://openjfx.io/
+echo IMPORTANT: If running from IDE:
+echo   1. CLOSE your IDE completely
+echo   2. REOPEN your IDE
+echo   3. Press F5 or use Run and Debug panel
+echo.
+echo Starting application now (from command line)...
 echo.
 pause
-exit /b 1
+
+call run-direct.bat
 
 :end
-pause
 

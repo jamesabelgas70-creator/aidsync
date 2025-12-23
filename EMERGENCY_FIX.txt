@@ -1,0 +1,88 @@
+================================================================================
+EMERGENCY FIX - If Nothing Else Works
+================================================================================
+
+If you're still getting "JavaFX runtime components are missing" error,
+follow these steps EXACTLY:
+
+================================================================================
+STEP 1: Open Command Prompt as Administrator
+================================================================================
+Right-click Command Prompt -> Run as Administrator
+
+================================================================================
+STEP 2: Navigate to Project Folder
+================================================================================
+cd "C:\path\to\aidsync"
+(Replace with your actual project path)
+
+================================================================================
+STEP 3: Run Troubleshooting Script
+================================================================================
+troubleshoot.bat
+
+This will automatically:
+- Check everything
+- Download missing dependencies
+- Compile if needed
+- Fix IDE configuration
+
+================================================================================
+STEP 4: Try Running Directly (Bypass IDE)
+================================================================================
+run-direct.bat
+
+This runs the application WITHOUT using IDE configuration.
+If this works, the problem is with IDE configuration.
+
+================================================================================
+STEP 5: If run-direct.bat Works But IDE Doesn't
+================================================================================
+
+1. Close IDE completely
+2. Delete .vscode folder (if it exists)
+3. Run: fix-ide-config.bat
+4. Reopen IDE
+5. Try F5 again
+
+================================================================================
+STEP 6: Manual Verification
+================================================================================
+
+Check these manually:
+
+1. JavaFX exists?
+   Check: %USERPROFILE%\.m2\repository\org\openjfx\javafx-controls\21.0.1\
+   Should see: javafx-controls-21.0.1-win.jar
+
+2. Project compiled?
+   Check: target\classes\com\aidsync\AidSyncApplication.class
+   Should exist
+
+3. IDE config exists?
+   Check: .vscode\launch.json
+   Should exist and NOT have "C:\Users\Asus" in it
+
+================================================================================
+STEP 7: Nuclear Option - Complete Reset
+================================================================================
+
+If nothing works:
+
+1. Delete .vscode folder
+2. Delete target folder
+3. Run: setup-and-run.bat
+4. Close and reopen IDE
+5. Try again
+
+================================================================================
+Still Not Working?
+================================================================================
+
+Run this and share the output:
+check-setup.bat
+
+This will show exactly what's wrong.
+
+================================================================================
+

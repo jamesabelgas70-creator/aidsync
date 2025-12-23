@@ -41,15 +41,33 @@ From IDE:
 If It Still Doesn't Work
 ================================================================================
 
-Run the diagnostic tool:
+METHOD 1: Run Troubleshooting Script (Recommended)
+    troubleshoot.bat
+
+This will automatically check and fix common issues.
+
+METHOD 2: Run Directly (Bypass IDE)
+    run-direct.bat
+
+This runs the application WITHOUT using IDE configuration.
+If this works, the problem is with IDE configuration.
+
+METHOD 3: Check What's Wrong
     check-setup.bat
 
-This will tell you exactly what's wrong.
+This will tell you exactly what's missing.
 
-Common fixes:
-- If Maven not found: Install from https://maven.apache.org/download.cgi
-- If dependencies missing: Run "mvn dependency:resolve"
-- If IDE config wrong: Run "fix-ide-config.bat"
+METHOD 4: Emergency Fix
+    See EMERGENCY_FIX.txt for step-by-step troubleshooting
+
+================================================================================
+Common Issues & Fixes
+================================================================================
+
+- Maven not found: Install from https://maven.apache.org/download.cgi
+- Dependencies missing: Run "mvn dependency:resolve"
+- IDE config wrong: Run "fix-ide-config.bat"
+- Still not working: Run "troubleshoot.bat" (auto-fixes most issues)
 
 ================================================================================
 Quick Reference
