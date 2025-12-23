@@ -1,12 +1,17 @@
 @echo off
 REM Batch file to run AIDSYNC with JavaFX from Maven dependencies
 echo AIDSYNC 2.0 - Starting application...
+echo.
 
 REM Find Maven local repository
 set MAVEN_REPO=%USERPROFILE%\.m2\repository
 if not exist "%MAVEN_REPO%" (
-    echo ERROR: Maven local repository not found
-    echo Please run 'mvn dependency:resolve' first to download dependencies
+    echo [ERROR] Maven local repository not found
+    echo.
+    echo Please run one of the following:
+    echo   1. setup-and-run.bat (recommended - sets up everything)
+    echo   2. mvn dependency:resolve (downloads dependencies only)
+    echo.
     pause
     exit /b 1
 )
@@ -23,8 +28,15 @@ set JAVAFX_GRAPHICS=%JAVAFX_BASE%\javafx-graphics\%JAVAFX_VERSION%\javafx-graphi
 
 REM Check if JavaFX JARs exist
 if not exist "%JAVAFX_CONTROLS%" (
-    echo ERROR: JavaFX JARs not found. Please download dependencies first.
-    echo Run: mvn dependency:resolve
+    echo [ERROR] JavaFX JARs not found in Maven repository
+    echo.
+    echo Please run one of the following:
+    echo   1. setup-and-run.bat (recommended - sets up everything)
+    echo   2. mvn dependency:resolve (downloads dependencies)
+    echo.
+    echo The JavaFX dependencies should be at:
+    echo   %JAVAFX_BASE%
+    echo.
     pause
     exit /b 1
 )
@@ -60,13 +72,23 @@ set CLASSPATH=%CLASSPATH%;%MAVEN_REPO%\ch\qos\logback\logback-core\1.4.11\logbac
 
 REM Check if classes are compiled
 if not exist "target\classes\com\aidsync\AidSyncApplication.class" (
-    echo ERROR: Application classes not found. Please compile first.
+    echo [ERROR] Application classes not found. Please compile first.
+    echo.
+    echo Please run one of the following:
+    echo   1. setup-and-run.bat (recommended - compiles and runs)
+    echo   2. mvn compile (compiles only)
+    echo.
     pause
     exit /b 1
 )
 
 REM Run the application
-echo Running AIDSYNC Application...
+echo [OK] All dependencies found
+echo [OK] Application classes compiled
+echo.
+echo ========================================
+echo Starting AIDSYNC Application...
+echo ========================================
 echo.
 
 java --module-path "%MODULE_PATH%" ^

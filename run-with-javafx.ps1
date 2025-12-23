@@ -6,8 +6,11 @@ Write-Host "AIDSYNC 2.0 - Starting application..." -ForegroundColor Cyan
 # Find Maven local repository
 $mavenRepo = "$env:USERPROFILE\.m2\repository"
 if (-not (Test-Path $mavenRepo)) {
-    Write-Host "ERROR: Maven local repository not found at $mavenRepo" -ForegroundColor Red
-    Write-Host "Please run 'mvn dependency:resolve' first to download dependencies" -ForegroundColor Yellow
+    Write-Host "[ERROR] Maven local repository not found at $mavenRepo" -ForegroundColor Red
+    Write-Host ""
+    Write-Host "Please run one of the following:" -ForegroundColor Yellow
+    Write-Host "  1. setup-and-run.bat (recommended - sets up everything)" -ForegroundColor Cyan
+    Write-Host "  2. mvn dependency:resolve (downloads dependencies only)" -ForegroundColor Cyan
     exit 1
 }
 
@@ -30,13 +33,17 @@ if (-not (Test-Path $javafxBaseJar)) { $missingJars += "javafx-base" }
 if (-not (Test-Path $javafxGraphics)) { $missingJars += "javafx-graphics" }
 
 if ($missingJars.Count -gt 0) {
-    Write-Host "ERROR: JavaFX JARs not found in Maven repository:" -ForegroundColor Red
+    Write-Host "[ERROR] JavaFX JARs not found in Maven repository:" -ForegroundColor Red
     foreach ($jar in $missingJars) {
         Write-Host "  - $jar" -ForegroundColor Yellow
     }
-    Write-Host "`nPlease download dependencies first:" -ForegroundColor Yellow
-    Write-Host "  mvn dependency:resolve" -ForegroundColor Cyan
-    Write-Host "`nOr download JavaFX SDK from: https://openjfx.io/" -ForegroundColor Yellow
+    Write-Host ""
+    Write-Host "Please run one of the following:" -ForegroundColor Yellow
+    Write-Host "  1. setup-and-run.bat (recommended - sets up everything)" -ForegroundColor Cyan
+    Write-Host "  2. mvn dependency:resolve (downloads dependencies)" -ForegroundColor Cyan
+    Write-Host ""
+    Write-Host "The JavaFX dependencies should be at:" -ForegroundColor Gray
+    Write-Host "  $javafxBase" -ForegroundColor Gray
     exit 1
 }
 
@@ -84,14 +91,21 @@ foreach ($dep in $dependencies) {
 
 # Check if classes are compiled
 if (-not (Test-Path "target\classes\com\aidsync\AidSyncApplication.class")) {
-    Write-Host "ERROR: Application classes not found. Please compile first:" -ForegroundColor Red
-    Write-Host "  javac -cp ... (or use Maven: mvn compile)" -ForegroundColor Yellow
+    Write-Host "[ERROR] Application classes not found. Please compile first." -ForegroundColor Red
+    Write-Host ""
+    Write-Host "Please run one of the following:" -ForegroundColor Yellow
+    Write-Host "  1. setup-and-run.bat (recommended - compiles and runs)" -ForegroundColor Cyan
+    Write-Host "  2. mvn compile (compiles only)" -ForegroundColor Cyan
     exit 1
 }
 
 # Run the application
-Write-Host "Running AIDSYNC Application..." -ForegroundColor Green
-Write-Host "Module Path: $modulePath" -ForegroundColor Gray
+Write-Host "[OK] All dependencies found" -ForegroundColor Green
+Write-Host "[OK] Application classes compiled" -ForegroundColor Green
+Write-Host ""
+Write-Host "========================================" -ForegroundColor Cyan
+Write-Host "Starting AIDSYNC Application..." -ForegroundColor Cyan
+Write-Host "========================================" -ForegroundColor Cyan
 Write-Host ""
 
 java --module-path "$modulePath" `

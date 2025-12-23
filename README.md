@@ -3,6 +3,20 @@
 ## Overview
 AIDSYNC is a comprehensive desktop application designed for Local Government Units (LGUs), Barangay Staff, and Disaster Response Teams to efficiently manage aid distribution during emergencies and regular relief operations.
 
+## 🚀 Quick Start (For New Machines)
+
+**If you're setting up AIDSYNC on a new machine and getting "JavaFX runtime components are missing" error:**
+
+### Easiest Method:
+1. Open Command Prompt in the project directory
+2. Run: `setup-and-run.bat`
+3. This automatically downloads dependencies, compiles, and runs the application
+
+### Manual Setup:
+See [QUICK_START.md](QUICK_START.md) for detailed instructions.
+
+**Note:** The IDE run configuration (`.vscode/launch.json`) is machine-specific. Run `setup-ide-run.ps1` on each new machine to generate the correct configuration.
+
 ## Features
 
 ### 🔐 Authentication & Security
