@@ -1,0 +1,74 @@
+/* Inventory Management Styles */
+.header {
+    -fx-background-color: #1976d2;
+    -fx-text-fill: white;
+}
+
+.page-title {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.back-button {
+    -fx-background-color: #424242;
+    -fx-text-fill: white;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.back-button:hover {
+    -fx-background-color: #616161;
+}
+
+.main-split {
+    -fx-background-color: #f5f5f5;
+}
+
+.search-bar {
+    -fx-background-color: white;
+    -fx-padding: 10px;
+    -fx-border-color: #ddd;
+    -fx-border-width: 0 0 1 0;
+}
+
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+}
+
+.form-panel {
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+    -fx-border-width: 0 0 0 1;
+}
+
+.form-section {
+    -fx-background-color: #fafafa;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 15px;
+}
+
+.section-header {
+    -fx-text-fill: #1976d2;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+.adjust-button {
+    -fx-background-color: #9c27b0;
+    -fx-text-fill: white;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.adjust-button:hover {
+    -fx-background-color: #7b1fa2;
+}
+
+.adjust-button:disabled {
+    -fx-background-color: #ccc;
+    -fx-cursor: default;
+}

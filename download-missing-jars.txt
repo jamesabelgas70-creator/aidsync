@@ -1,0 +1,5 @@
+Missing JAR files needed:
+
+1. bytes library: https://repo1.maven.org/maven2/at/favre/lib/bytes/1.6.1/bytes-1.6.1.jar
+
+Download this file and save it to the lib folder, then try running again.

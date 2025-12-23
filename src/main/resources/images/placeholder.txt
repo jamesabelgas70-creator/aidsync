@@ -1,0 +1,7 @@
+This directory contains application images:
+- aidsync-logo.png (Application logo)
+- aidsync-icon.png (Application icon)
+- placeholder images for beneficiaries
+- UI icons and graphics
+
+Note: Add actual image files here for production use.

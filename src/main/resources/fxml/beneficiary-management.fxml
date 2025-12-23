@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aidsync.controller.BeneficiaryController">
+   <top>
+      <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="header">
+         <children>
+            <Label styleClass="page-title" text="Beneficiary Management">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Region HBox.hgrow="ALWAYS" />
+            <Button fx:id="backButton" onAction="#handleBack" styleClass="back-button" text="← Back to Dashboard" />
+         </children>
+         <padding>
+            <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+         </padding>
+      </HBox>
+   </top>
+   <center>
+      <SplitPane dividerPositions="0.6" styleClass="main-split">
+         <items>
+            <!-- Left: Beneficiary List -->
+            <VBox spacing="10.0">
+               <children>
+                  <!-- Search and Filters -->
+                  <HBox spacing="10.0" styleClass="search-bar">
+                     <children>
+                        <TextField fx:id="searchField" promptText="Search by name, ID, or contact..." HBox.hgrow="ALWAYS" />
+                        <ComboBox fx:id="barangayFilter" promptText="All Barangays" />
+                        <ComboBox fx:id="statusFilter" promptText="All Status" />
+                     </children>
+                  </HBox>
+                  
+                  <!-- Beneficiary Table -->
+                  <TableView fx:id="beneficiaryTable" VBox.vgrow="ALWAYS">
+                     <columns>
+                        <TableColumn fx:id="idColumn" prefWidth="80.0" text="ID" />
+                        <TableColumn fx:id="nameColumn" prefWidth="200.0" text="Full Name" />
+                        <TableColumn fx:id="ageColumn" prefWidth="50.0" text="Age" />
+                        <TableColumn fx:id="barangayColumn" prefWidth="120.0" text="Barangay" />
+                        <TableColumn fx:id="statusColumn" prefWidth="80.0" text="Status" />
+                        <TableColumn fx:id="priorityColumn" prefWidth="70.0" text="Priority" />
+                     </columns>
+                  </TableView>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="5.0" top="10.0" />
+               </padding>
+            </VBox>
+            
+            <!-- Right: Beneficiary Form -->
+            <ScrollPane fitToWidth="true" styleClass="form-panel">
+               <content>
+                  <VBox spacing="15.0">
+                     <children>
+                        <Label styleClass="form-title" text="Beneficiary Information">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        
+                        <!-- Personal Information -->
+                        <VBox spacing="10.0" styleClass="form-section">
+                           <children>
+                              <Label styleClass="section-header" text="Personal Information" />
+                              
+                              <GridPane hgap="10.0" vgap="8.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                 </columnConstraints>
+                                 <children>
+                                    <Label text="Full Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                    <TextField fx:id="fullNameField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                    
+                                    <Label text="Birth Date:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                    <DatePicker fx:id="birthDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    
+                                    <Label text="Gender:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                                    <ComboBox fx:id="genderComboBox" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    
+                                    <Label text="Civil Status:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                                    <ComboBox fx:id="civilStatusComboBox" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    
+                                    <Label text="Contact Number:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                                    <TextField fx:id="contactNumberField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </VBox>
+                        
+                        <!-- Address Information -->
+                        <VBox spacing="10.0" styleClass="form-section">
+                           <children>
+                              <Label styleClass="section-header" text="Address Information" />
+                              
+                              <GridPane hgap="10.0" vgap="8.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                 </columnConstraints>
+                                 <children>
+                                    <Label text="Barangay:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                    <ComboBox fx:id="barangayComboBox" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                    
+                                    <Label text="Street/Sitio:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                    <TextField fx:id="streetSitioField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </VBox>
+                        
+                        <!-- Household Information -->
+                        <VBox spacing="10.0" styleClass="form-section">
+                           <children>
+                              <Label styleClass="section-header" text="Household Information" />
+                              
+                              <GridPane hgap="10.0" vgap="8.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                 </columnConstraints>
+                                 <children>
+                                    <CheckBox fx:id="householdHeadCheckBox" text="Household Head" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0" />
+                                    
+                                    <Label text="Family Size:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                    <Spinner fx:id="familySizeSpinner" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    
+                                    <Label text="Monthly Income:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                                    <ComboBox fx:id="incomeRangeComboBox" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    
+                                    <Label text="Employment:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                                    <ComboBox fx:id="employmentStatusComboBox" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </VBox>
+                        
+                        <!-- Priority Level -->
+                        <VBox spacing="10.0" styleClass="form-section">
+                           <children>
+                              <Label styleClass="section-header" text="Priority Level" />
+                              <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                 <children>
+                                    <Label text="Priority:" />
+                                    <Slider fx:id="prioritySlider" max="5.0" min="1.0" value="3.0" />
+                                    <Label fx:id="priorityLabel" text="Medium Priority" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        
+                        <!-- Vulnerability Assessment -->
+                        <VBox spacing="10.0" styleClass="form-section">
+                           <children>
+                              <Label styleClass="section-header" text="Vulnerability Assessment" />
+                              
+                              <GridPane hgap="10.0" vgap="5.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" />
+                                    <ColumnConstraints hgrow="SOMETIMES" />
+                                 </columnConstraints>
+                                 <children>
+                                    <CheckBox fx:id="pwdCheckBox" text="Person with Disability (PWD)" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                    <CheckBox fx:id="seniorCitizenCheckBox" text="Senior Citizen (65+)" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                    
+                                    <CheckBox fx:id="pregnantLactatingCheckBox" text="Pregnant/Lactating Mother" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                    <CheckBox fx:id="soloParentCheckBox" text="Solo Parent" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    
+                                    <CheckBox fx:id="chronicIllnessCheckBox" text="Chronic Illness" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                                    <CheckBox fx:id="orphanCheckBox" text="Orphan/Abandoned Child" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    
+                                    <CheckBox fx:id="indigenousCheckBox" text="Indigenous Peoples (IP)" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                                    <CheckBox fx:id="homelessCheckBox" text="Homeless" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </VBox>
+                        
+                        <!-- Action Buttons -->
+                        <HBox spacing="10.0" styleClass="button-bar">
+                           <children>
+                              <Button fx:id="saveButton" onAction="#handleSave" styleClass="save-button" text="Save" />
+                              <Button fx:id="clearButton" onAction="#handleClear" styleClass="clear-button" text="Clear" />
+                              <Button fx:id="deleteButton" onAction="#handleDelete" styleClass="delete-button" text="Delete" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </items>
+      </SplitPane>
+   </center>
+</BorderPane>

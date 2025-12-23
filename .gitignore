@@ -1,0 +1,51 @@
+# Compiled class files
+*.class
+target/
+*.jar
+*.war
+*.ear
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Database files
+*.db
+*.sqlite
+
+# Environment and configuration files
+.env
+application.properties
+config.properties
+
+# Backup files
+*.bak
+*.backup
+
+# Temporary files
+*.tmp
+*.temp
+
+# Maven
+.mvn/
+mvnw
+mvnw.cmd
+
+# Security sensitive files
+keystore.*
+*.p12
+*.jks
+credentials.*
+secrets.*

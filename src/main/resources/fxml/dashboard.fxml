@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aidsync.controller.DashboardController">
+   <top>
+      <!-- Header -->
+      <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="header">
+         <children>
+            <Label fx:id="welcomeLabel" styleClass="welcome-label" text="Welcome, User">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Region HBox.hgrow="ALWAYS" />
+            <Label fx:id="dateTimeLabel" styleClass="datetime-label" text="Date Time" />
+            <Button fx:id="logoutButton" onAction="#handleLogout" styleClass="logout-button" text="Logout" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
+      </HBox>
+   </top>
+   <left>
+      <!-- Navigation Menu -->
+      <VBox spacing="5.0" styleClass="nav-menu">
+         <children>
+            <Button fx:id="dashboardMenuButton" onAction="#handleDashboardMenu" styleClass="nav-button active" text="Dashboard" />
+            <Button fx:id="beneficiaryMenuButton" onAction="#handleBeneficiaryMenu" styleClass="nav-button" text="Beneficiaries" />
+            <Button fx:id="inventoryMenuButton" onAction="#handleInventoryMenu" styleClass="nav-button" text="Inventory" />
+            <Button fx:id="distributionMenuButton" onAction="#handleDistributionMenu" styleClass="nav-button" text="Distribution" />
+            <Button fx:id="reportingMenuButton" onAction="#handleReportingMenu" styleClass="nav-button" text="Reports" />
+            <Button fx:id="gisMenuButton" onAction="#handleGISMenu" styleClass="nav-button" text="GIS Mapping" />
+            <Button fx:id="adminMenuButton" onAction="#handleAdminMenu" styleClass="nav-button" text="Administration" />
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+         </padding>
+      </VBox>
+   </left>
+   <center>
+      <!-- Main Content -->
+      <ScrollPane fitToWidth="true" styleClass="main-content">
+         <content>
+            <VBox spacing="20.0">
+               <children>
+                  <!-- Quick Actions -->
+                  <VBox spacing="10.0">
+                     <children>
+                        <Label styleClass="section-title" text="Quick Actions">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <HBox spacing="15.0">
+                           <children>
+                              <Button fx:id="addBeneficiaryButton" onAction="#handleAddBeneficiary" styleClass="action-button" text="Add Beneficiary" />
+                              <Button fx:id="recordDistributionButton" onAction="#handleRecordDistribution" styleClass="action-button" text="Record Distribution" />
+                              <Button fx:id="checkInventoryButton" onAction="#handleCheckInventory" styleClass="action-button" text="Check Inventory" />
+                              <Button fx:id="generateReportButton" onAction="#handleGenerateReport" styleClass="action-button" text="Generate Report" />
+                              <Button fx:id="emergencyModeButton" onAction="#handleEmergencyMode" styleClass="emergency-button" text="Emergency Mode" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  
+                  <!-- Statistics Cards -->
+                  <VBox spacing="10.0">
+                     <children>
+                        <Label styleClass="section-title" text="Statistics">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <HBox spacing="15.0">
+                           <children>
+                              <VBox styleClass="stat-card">
+                                 <children>
+                                    <Label styleClass="stat-title" text="Total Beneficiaries" />
+                                    <Label fx:id="totalBeneficiariesLabel" styleClass="stat-value" text="0" />
+                                    <Label fx:id="totalBeneficiariesChangeLabel" styleClass="stat-change" text="+0%" />
+                                 </children>
+                              </VBox>
+                              <VBox styleClass="stat-card">
+                                 <children>
+                                    <Label styleClass="stat-title" text="Distributions Today" />
+                                    <Label fx:id="distributionsTodayLabel" styleClass="stat-value" text="0" />
+                                    <Label fx:id="distributionsTodayChangeLabel" styleClass="stat-change" text="+0%" />
+                                 </children>
+                              </VBox>
+                              <VBox styleClass="stat-card alert">
+                                 <children>
+                                    <Label styleClass="stat-title" text="Low Stock Items" />
+                                    <Label fx:id="lowStockItemsLabel" styleClass="stat-value" text="0" />
+                                 </children>
+                              </VBox>
+                              <VBox styleClass="stat-card">
+                                 <children>
+                                    <Label styleClass="stat-title" text="Pending Tasks" />
+                                    <Label fx:id="pendingTasksLabel" styleClass="stat-value" text="0" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  
+                  <!-- Activity Feed -->
+                  <VBox spacing="10.0">
+                     <children>
+                        <Label styleClass="section-title" text="Recent Activity">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <VBox fx:id="activityFeedVBox" styleClass="activity-feed" />
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>
