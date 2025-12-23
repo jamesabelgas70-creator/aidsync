@@ -49,10 +49,19 @@ echo [OK] Project compiled
 echo.
 echo Setting up IDE configuration...
 powershell -ExecutionPolicy Bypass -File setup-ide-run.ps1
+if errorlevel 1 (
+    echo [WARNING] IDE configuration setup had issues, but continuing...
+    echo [INFO] You can run 'setup-ide-run.ps1' manually later
+)
 echo.
 echo ========================================
 echo Starting AIDSYNC Application...
 echo ========================================
+echo.
+echo [INFO] If running from IDE, make sure to:
+echo   1. Close and reopen the IDE
+echo   2. Or run 'setup-ide-run.ps1' to update IDE config
+echo.
 call run-javafx.bat
 goto :end
 

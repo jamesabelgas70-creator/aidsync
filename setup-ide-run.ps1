@@ -72,5 +72,13 @@ $launchConfig = @{
 $launchConfig | ConvertTo-Json -Depth 10 | Out-File -FilePath ".vscode\launch.json" -Encoding UTF8 -NoNewline
 
 Write-Host "`n[SUCCESS] IDE run configuration created!" -ForegroundColor Green
-Write-Host "You can now run 'AidSyncApplication' from the Run and Debug panel (F5)" -ForegroundColor Yellow
-Write-Host "`nModule Path configured: $modulePath" -ForegroundColor Gray
+Write-Host ""
+Write-Host "Next steps:" -ForegroundColor Cyan
+Write-Host "  1. Close and reopen your IDE (VS Code/Cursor)" -ForegroundColor Yellow
+Write-Host "  2. Press F5 or open Run and Debug panel" -ForegroundColor Yellow
+Write-Host "  3. Select 'Run AidSyncApplication' and click Run" -ForegroundColor Yellow
+Write-Host ""
+Write-Host "Module Path configured: $modulePath" -ForegroundColor Gray
+Write-Host ""
+Write-Host "IMPORTANT: If you still get JavaFX errors after reopening IDE," -ForegroundColor Yellow
+Write-Host "make sure the IDE is using the updated launch.json file." -ForegroundColor Yellow

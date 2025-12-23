@@ -1,0 +1,70 @@
+================================================================================
+AIDSYNC - Setup Instructions for New Machine
+================================================================================
+
+If you're getting this error:
+    "JavaFX runtime components are missing, and are required to run this application"
+
+FOLLOW THESE STEPS:
+
+================================================================================
+STEP 1: Run the Setup Script
+================================================================================
+
+1. Open Command Prompt in the AIDSYNC project folder
+2. Run this command:
+   
+   setup-and-run.bat
+
+3. Wait for it to complete (it will download dependencies, compile, and set up everything)
+
+================================================================================
+STEP 2: Close and Reopen Your IDE
+================================================================================
+
+IMPORTANT: After running setup-and-run.bat:
+- Close VS Code/Cursor completely
+- Reopen it
+- This ensures the IDE uses the new configuration
+
+================================================================================
+STEP 3: Run the Application
+================================================================================
+
+From IDE:
+- Press F5, OR
+- Open Run and Debug panel (Ctrl+Shift+D)
+- Select "Run AidSyncApplication"
+- Click Run
+
+================================================================================
+If It Still Doesn't Work
+================================================================================
+
+Run the diagnostic tool:
+    check-setup.bat
+
+This will tell you exactly what's wrong.
+
+Common fixes:
+- If Maven not found: Install from https://maven.apache.org/download.cgi
+- If dependencies missing: Run "mvn dependency:resolve"
+- If IDE config wrong: Run "fix-ide-config.bat"
+
+================================================================================
+Quick Reference
+================================================================================
+
+setup-and-run.bat      - Complete setup (run this first!)
+check-setup.bat        - Check what's wrong
+fix-ide-config.bat     - Fix IDE configuration only
+run-javafx.bat         - Run application (after setup)
+
+================================================================================
+
+For detailed help, see:
+- README_FIRST.md
+- FIX_JAVAFX_ERROR.md
+
+================================================================================
+
