@@ -57,11 +57,11 @@ public class SceneManager {
     }
     
     public static void switchToLogin() {
-        loadScene("/fxml/login.fxml", "/css/login.css", "AIDSYNC - Login", 600, 700, false);
+        loadScene("/fxml/login.fxml", "/css/login.css", "AIDSYNC - Login", 480, 650, false);
     }
     
     public static void switchToRegister() {
-        loadScene("/fxml/register.fxml", "/css/login.css", "AIDSYNC - Create Account", 450, 600, false);
+        loadScene("/fxml/register.fxml", "/css/register.css", "AIDSYNC - Create Account", 520, 750, false);
     }
     
     public static void switchToDashboard() {

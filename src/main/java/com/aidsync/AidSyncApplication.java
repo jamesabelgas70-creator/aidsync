@@ -24,7 +24,7 @@ public class AidSyncApplication extends Application {
             
             // Load login screen
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/login.fxml"));
-            Scene scene = new Scene(loader.load(), 400, 500);
+            Scene scene = new Scene(loader.load(), 480, 650);
             scene.getStylesheets().add(getClass().getResource("/css/login.css").toExternalForm());
             
             primaryStage.setTitle("AIDSYNC - Aid Distribution Management System");
@@ -35,6 +35,10 @@ public class AidSyncApplication extends Application {
             }
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
+            
+            // Center the window on screen
+            primaryStage.centerOnScreen();
+            
             primaryStage.show();
             
             // Set primary stage in session manager

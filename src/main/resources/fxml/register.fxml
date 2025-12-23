@@ -2,74 +2,110 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.text.Font?>
 
 <VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aidsync.controller.RegisterController">
    <children>
-      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="title" text="Create Account">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Label>
-      
-      <VBox spacing="15.0">
+      <VBox alignment="CENTER" prefHeight="750.0" prefWidth="520.0" spacing="20.0" styleClass="register-container">
          <children>
-            <VBox spacing="5.0">
+            <!-- Header Section -->
+            <VBox alignment="CENTER" spacing="10.0" styleClass="header-section">
                <children>
-                  <Label text="Username:" />
-                  <TextField fx:id="usernameField" promptText="Enter username (3-20 characters)" />
+                  <Label styleClass="register-title" text="Create Account">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label styleClass="register-subtitle" text="Join AIDSYNC to manage aid distribution">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
                </children>
             </VBox>
             
-            <VBox spacing="5.0">
+            <!-- Registration Form -->
+            <VBox spacing="16.0" styleClass="register-form">
                <children>
-                  <Label text="Email:" />
-                  <TextField fx:id="emailField" promptText="Enter email address" />
+                  <VBox spacing="8.0">
+                     <children>
+                        <Label text="Username" styleClass="field-label" />
+                        <TextField fx:id="usernameField" promptText="Enter username (3-20 characters)" styleClass="register-field" />
+                     </children>
+                  </VBox>
+                  
+                  <VBox spacing="8.0">
+                     <children>
+                        <Label text="Email" styleClass="field-label" />
+                        <TextField fx:id="emailField" promptText="Enter email address" styleClass="register-field" />
+                     </children>
+                  </VBox>
+                  
+                  <VBox spacing="8.0">
+                     <children>
+                        <Label text="Full Name" styleClass="field-label" />
+                        <TextField fx:id="fullNameField" promptText="Enter your full name" styleClass="register-field" />
+                     </children>
+                  </VBox>
+                  
+                  <VBox spacing="8.0">
+                     <children>
+                        <Label text="Password" styleClass="field-label" />
+                        <PasswordField fx:id="passwordField" promptText="8+ chars, uppercase, lowercase, number" styleClass="register-field" />
+                     </children>
+                  </VBox>
+                  
+                  <VBox spacing="8.0">
+                     <children>
+                        <Label text="Confirm Password" styleClass="field-label" />
+                        <PasswordField fx:id="confirmPasswordField" promptText="Re-enter password" styleClass="register-field" />
+                     </children>
+                  </VBox>
+                  
+                  <VBox spacing="8.0">
+                     <children>
+                        <Label text="Role" styleClass="field-label" />
+                        <ComboBox fx:id="roleComboBox" maxWidth="1.7976931348623157E308" styleClass="register-combobox" />
+                     </children>
+                  </VBox>
+                  
+                  <VBox spacing="10.0">
+                     <children>
+                        <Button fx:id="registerButton" onAction="#handleRegister" prefWidth="300.0" styleClass="register-button" text="CREATE ACCOUNT">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="backToLoginButton" onAction="#handleBackToLogin" prefWidth="300.0" styleClass="back-button" text="Back to Login">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
                </children>
+               <padding>
+                  <Insets bottom="30.0" left="45.0" right="45.0" top="30.0" />
+               </padding>
             </VBox>
             
-            <VBox spacing="5.0">
+            <!-- Footer -->
+            <VBox alignment="CENTER" spacing="5.0">
                <children>
-                  <Label text="Full Name:" />
-                  <TextField fx:id="fullNameField" promptText="Enter your full name" />
+                  <Label styleClass="footer-text" text="Already have an account?">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
                </children>
             </VBox>
-            
-            <VBox spacing="5.0">
-               <children>
-                  <Label text="Password:" />
-                  <PasswordField fx:id="passwordField" promptText="8+ chars, uppercase, lowercase, number" />
-               </children>
-            </VBox>
-            
-            <VBox spacing="5.0">
-               <children>
-                  <Label text="Confirm Password:" />
-                  <PasswordField fx:id="confirmPasswordField" promptText="Re-enter password" />
-               </children>
-            </VBox>
-            
-            <VBox spacing="5.0">
-               <children>
-                  <Label text="Role:" />
-                  <ComboBox fx:id="roleComboBox" maxWidth="1.7976931348623157E308" />
-               </children>
-            </VBox>
-            
-            <HBox spacing="10.0">
-               <children>
-                  <Button fx:id="registerButton" onAction="#handleRegister" styleClass="primary-button" text="Create Account" HBox.hgrow="ALWAYS" />
-                  <Button fx:id="backToLoginButton" onAction="#handleBackToLogin" text="Back to Login" HBox.hgrow="ALWAYS" />
-               </children>
-            </HBox>
          </children>
-         <VBox.margin>
-            <Insets top="20.0" />
-         </VBox.margin>
+         <padding>
+            <Insets bottom="35.0" left="35.0" right="35.0" top="35.0" />
+         </padding>
       </VBox>
    </children>
-   <padding>
-      <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
-   </padding>
 </VBox>
