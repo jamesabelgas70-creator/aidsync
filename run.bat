@@ -1,4 +1,29 @@
 @echo off
-cd /d "c:\Users\nashd\OneDrive\Documents\AIDSYNC 2.0"
-java --module-path "C:\Program Files\Java\javafx-21.0.1\lib" --add-modules javafx.controls,javafx.fxml --add-opens javafx.fxml/javafx.fxml=ALL-UNNAMED --add-opens javafx.controls/javafx.scene.control=ALL-UNNAMED -cp "target\classes;lib\*" com.aidsync.AidSyncApplication
-pause
+REM Simple run script using Maven Wrapper
+echo ========================================
+echo AIDSYNC 2.0 - Running Application
+echo ========================================
+echo.
+
+REM Check if mvnw exists
+if not exist "mvnw.cmd" (
+    echo [ERROR] Maven wrapper not found
+    echo Please make sure you're in the project root directory
+    pause
+    exit /b 1
+)
+
+REM Run using Maven wrapper and JavaFX plugin
+call mvnw.cmd javafx:run
+
+if errorlevel 1 (
+    echo.
+    echo [ERROR] Failed to run application
+    echo.
+    echo Troubleshooting:
+    echo   1. Make sure Java 11+ is installed
+    echo   2. Check internet connection (first run downloads Maven)
+    echo   3. Run: mvnw.cmd clean compile (to compile first)
+    echo.
+    pause
+)

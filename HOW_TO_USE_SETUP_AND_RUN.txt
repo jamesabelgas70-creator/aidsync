@@ -1,0 +1,204 @@
+================================================================================
+HOW TO USE setup-and-run.bat ON ANOTHER MACHINE
+================================================================================
+
+This guide explains how to set up and run AIDSYNC on a new machine.
+
+================================================================================
+PREREQUISITES (Check These First)
+================================================================================
+
+Before running setup-and-run.bat, make sure you have:
+
+1. Java 11 or higher installed
+   - Check: Open Command Prompt and type: java -version
+   - If not installed: Download from https://adoptium.net/
+   - Install and add to PATH
+
+2. Maven installed (optional but recommended)
+   - Check: Open Command Prompt and type: mvn -version
+   - If not installed: Download from https://maven.apache.org/download.cgi
+   - Extract and add Maven's bin folder to PATH
+   - Restart Command Prompt after adding to PATH
+
+3. Internet connection
+   - Required to download dependencies
+
+================================================================================
+STEP-BY-STEP INSTRUCTIONS
+================================================================================
+
+STEP 1: Open Command Prompt
+----------------------------
+- Press Windows Key + R
+- Type: cmd
+- Press Enter
+- OR right-click on the AIDSYNC folder and select "Open in Terminal"
+
+STEP 2: Navigate to AIDSYNC Folder
+-----------------------------------
+- Type: cd "C:\path\to\aidsync"
+- Replace "C:\path\to\aidsync" with your actual project folder path
+- Press Enter
+
+Example:
+  cd "C:\Users\YourName\Documents\GitHub\aidsync"
+
+STEP 3: Run the Setup Script
+----------------------------
+- Type: setup-and-run.bat
+- Press Enter
+
+STEP 4: Wait for Setup to Complete
+-----------------------------------
+The script will:
+  1. Check if Java is installed
+  2. Check if Maven is installed
+  3. Download all dependencies (including JavaFX) - This may take 2-5 minutes
+  4. Compile the project
+  5. Set up IDE configuration
+  6. Run the application
+
+You'll see progress messages like:
+  [1/5] Checking Java...
+  [OK] Java found
+  [2/5] Checking Maven...
+  [OK] Maven found
+  [3/5] Downloading dependencies...
+  [OK] Dependencies downloaded
+  [4/5] Compiling project...
+  [OK] Project compiled
+  [5/5] Setting up IDE configuration...
+  [OK] IDE configuration created
+
+STEP 5: Application Should Start
+---------------------------------
+After setup completes, the application window should open automatically.
+
+If it doesn't, you can run it manually:
+  - Type: run-direct.bat
+  - Press Enter
+
+================================================================================
+IF YOU GET ERRORS
+================================================================================
+
+ERROR: "Java is not installed or not in PATH"
+----------------------------------------------
+SOLUTION:
+1. Install Java from https://adoptium.net/
+2. Make sure to add Java to your system PATH
+3. Restart Command Prompt
+4. Run setup-and-run.bat again
+
+ERROR: "Maven not found in PATH"
+---------------------------------
+SOLUTION:
+1. Download Maven from https://maven.apache.org/download.cgi
+2. Extract to a folder (e.g., C:\Program Files\Apache\maven)
+3. Add Maven's bin folder to PATH:
+   - Right-click "This PC" -> Properties
+   - Advanced System Settings -> Environment Variables
+   - Edit "Path" variable
+   - Add: C:\Program Files\Apache\maven\bin
+4. Restart Command Prompt
+5. Run setup-and-run.bat again
+
+ERROR: "Failed to download dependencies"
+----------------------------------------
+SOLUTION:
+1. Check your internet connection
+2. Make sure you can access Maven Central repository
+3. Try running: mvn dependency:resolve
+4. If still fails, check firewall settings
+
+ERROR: "Compilation failed"
+----------------------------
+SOLUTION:
+1. Check the error messages above
+2. Make sure Java is version 11 or higher
+3. Try running: mvn clean compile
+4. Check for any error messages
+
+================================================================================
+AFTER SETUP COMPLETES
+================================================================================
+
+OPTION 1: Run from Command Line
+-------------------------------
+Every time you want to run AIDSYNC:
+  run-direct.bat
+
+OPTION 2: Run from IDE (VS Code/Cursor)
+----------------------------------------
+1. CLOSE your IDE completely
+2. REOPEN your IDE
+3. Press F5, OR
+4. Open Run and Debug panel (Ctrl+Shift+D)
+5. Select "Run AidSyncApplication"
+6. Click Run
+
+IMPORTANT: You must close and reopen IDE after running setup-and-run.bat
+so it picks up the new configuration.
+
+================================================================================
+VERIFICATION
+================================================================================
+
+To verify everything is set up correctly, run:
+  check-setup.bat
+
+This will check:
+  ✓ Java installation
+  ✓ Maven installation
+  ✓ Dependencies downloaded
+  ✓ Project compiled
+  ✓ IDE configuration
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+If setup-and-run.bat doesn't work, try:
+
+1. Run: troubleshoot.bat
+   (Automatically fixes common issues)
+
+2. Run: check-setup.bat
+   (Shows exactly what's wrong)
+
+3. See: EMERGENCY_FIX.txt
+   (Step-by-step troubleshooting guide)
+
+================================================================================
+QUICK REFERENCE
+================================================================================
+
+First time setup:
+  setup-and-run.bat
+
+Run application (after setup):
+  run-direct.bat
+
+Check what's wrong:
+  check-setup.bat
+
+Auto-fix issues:
+  troubleshoot.bat
+
+Fix IDE configuration only:
+  fix-ide-config.bat
+
+================================================================================
+IMPORTANT NOTES
+================================================================================
+
+1. You only need to run setup-and-run.bat ONCE per machine
+2. After setup, you can use run-direct.bat to run the application
+3. If you use an IDE, close and reopen it after setup
+4. The setup downloads dependencies to: %USERPROFILE%\.m2\repository
+5. This may take 2-5 minutes on first run (downloading dependencies)
+
+================================================================================
+
+

@@ -38,10 +38,10 @@ config.properties
 *.tmp
 *.temp
 
-# Maven
-.mvn/
-mvnw
-mvnw.cmd
+# Maven (keep wrapper files, ignore downloaded Maven)
+.mvn/wrapper/maven-wrapper.jar
+!.mvn/wrapper/maven-wrapper.properties
+# Note: mvnw and mvnw.cmd should be committed to repo
 
 # Security sensitive files
 keystore.*

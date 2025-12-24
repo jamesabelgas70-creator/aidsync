@@ -1,0 +1,63 @@
+================================================================================
+SIMPLE INSTRUCTIONS - For Other Machine User
+================================================================================
+
+Just follow these 3 steps:
+
+================================================================================
+STEP 1: Open Command Prompt
+================================================================================
+- Press Windows Key
+- Type: cmd
+- Press Enter
+
+================================================================================
+STEP 2: Go to AIDSYNC Folder
+================================================================================
+- Type: cd "C:\path\to\aidsync"
+- (Replace with your actual folder path)
+- Press Enter
+
+Example:
+  cd "C:\Users\YourName\Documents\aidsync"
+
+================================================================================
+STEP 3: Run Setup
+================================================================================
+- Type: setup-and-run.bat
+- Press Enter
+- Wait for it to finish (2-5 minutes)
+- The application will start automatically!
+
+================================================================================
+THAT'S IT!
+================================================================================
+
+The script does everything automatically:
+  ✓ Checks Java and Maven
+  ✓ Downloads all dependencies
+  ✓ Compiles the project
+  ✓ Sets up IDE configuration
+  ✓ Runs the application
+
+================================================================================
+IF YOU GET AN ERROR
+================================================================================
+
+Run this instead:
+  troubleshoot.bat
+
+It will automatically fix most issues.
+
+================================================================================
+NEXT TIME (After Setup is Done)
+================================================================================
+
+Just run:
+  run-direct.bat
+
+That's it! No need to run setup again.
+
+================================================================================
+
+
