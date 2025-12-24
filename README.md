@@ -39,7 +39,14 @@ This takes 2-5 minutes on first run.
 ### 🔧 Troubleshooting
 - **Java not found:** Install Java 11+ from [Adoptium](https://adoptium.net/)
 - **First run slow:** Normal! Maven and dependencies are downloading
+- **VS Code "Run Java" button error:** See [FIX_VSCODE_JAVAFX.md](FIX_VSCODE_JAVAFX.md) - Use Tasks instead!
 - **Still having issues:** See [README_SIMPLE.md](README_SIMPLE.md) troubleshooting section
+
+### ⚠️ VS Code Users - Special Note
+If clicking "Run Java" button gives JavaFX error but `run.bat` works:
+- **Easiest:** Use Tasks - `Ctrl+Shift+P` → `Tasks: Run Task` → `Run AIDSYNC`
+- **Or Terminal:** `` Ctrl+` `` → type `run.bat`
+- **Or Fix Run Button:** See [VSCODE_SETUP.md](VSCODE_SETUP.md)
 
 ## Features
 

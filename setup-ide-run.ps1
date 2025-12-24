@@ -74,11 +74,15 @@ $launchConfig | ConvertTo-Json -Depth 10 | Out-File -FilePath ".vscode\launch.js
 Write-Host "`n[SUCCESS] IDE run configuration created!" -ForegroundColor Green
 Write-Host ""
 Write-Host "Next steps:" -ForegroundColor Cyan
-Write-Host "  1. Close and reopen your IDE (VS Code/Cursor)" -ForegroundColor Yellow
-Write-Host "  2. Press F5 or open Run and Debug panel" -ForegroundColor Yellow
-Write-Host "  3. Select 'Run AidSyncApplication' and click Run" -ForegroundColor Yellow
+Write-Host "  1. CLOSE VS CODE COMPLETELY (File → Exit, not just close window)" -ForegroundColor Yellow
+Write-Host "  2. REOPEN VS Code" -ForegroundColor Yellow
+Write-Host "  3. Press F5 or click 'Run Java' button" -ForegroundColor Yellow
+Write-Host ""
+Write-Host "Alternative (Always Works):" -ForegroundColor Cyan
+Write-Host "  - Use Tasks: Ctrl+Shift+P → 'Tasks: Run Task' → 'Run AIDSYNC'" -ForegroundColor Green
+Write-Host "  - Or Terminal: Ctrl+` → type 'run.bat'" -ForegroundColor Green
 Write-Host ""
 Write-Host "Module Path configured: $modulePath" -ForegroundColor Gray
 Write-Host ""
-Write-Host "IMPORTANT: If you still get JavaFX errors after reopening IDE," -ForegroundColor Yellow
-Write-Host "make sure the IDE is using the updated launch.json file." -ForegroundColor Yellow
+Write-Host "IMPORTANT: VS Code must be COMPLETELY CLOSED and REOPENED" -ForegroundColor Yellow
+Write-Host "for the new configuration to take effect!" -ForegroundColor Yellow

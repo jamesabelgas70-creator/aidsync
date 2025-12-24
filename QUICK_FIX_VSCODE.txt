@@ -1,0 +1,65 @@
+================================================================================
+QUICK FIX: JavaFX Error in VS Code
+================================================================================
+
+PROBLEM:
+- Clicking "Run Java" button → Error: "JavaFX runtime components missing"
+- Running "run.bat" from command prompt → Works fine!
+
+SOLUTION (Choose One):
+================================================================================
+
+OPTION 1: Fix Run Button (2 minutes)
+================================================================================
+
+1. Open PowerShell in project folder
+2. Run:
+   powershell -ExecutionPolicy Bypass -File setup-ide-run.ps1
+
+3. CLOSE VS CODE COMPLETELY (File → Exit)
+4. REOPEN VS Code
+5. Press F5 or click "Run Java" button
+6. Should work now!
+
+================================================================================
+
+OPTION 2: Use Tasks (Always Works - Recommended!)
+================================================================================
+
+1. Press Ctrl+Shift+P
+2. Type: Tasks: Run Task
+3. Select: Run AIDSYNC
+4. Application starts!
+
+(No setup needed - uses Maven Wrapper like run.bat)
+
+================================================================================
+
+OPTION 3: Use Terminal (Simplest)
+================================================================================
+
+1. Press Ctrl+` (backtick) to open terminal
+2. Type: run.bat
+3. Press Enter
+4. Application runs!
+
+================================================================================
+
+WHY THIS HAPPENS:
+================================================================================
+
+- run.bat uses Maven Wrapper → automatically handles JavaFX
+- VS Code Run Button uses launch.json → needs correct paths for YOUR machine
+- launch.json has paths from another machine → doesn't work on your machine
+
+================================================================================
+
+RECOMMENDED:
+================================================================================
+
+Use Option 2 (Tasks) or Option 3 (Terminal) - they always work!
+
+Only use Option 1 if you need debugging features in VS Code.
+
+================================================================================
+

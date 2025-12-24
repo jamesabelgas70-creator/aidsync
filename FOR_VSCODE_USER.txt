@@ -1,0 +1,62 @@
+================================================================================
+FIX: "JavaFX runtime components missing" in VS Code
+================================================================================
+
+You're getting this error when clicking "Run Java" button, but run.bat works.
+
+QUICK FIX (Choose the easiest for you):
+================================================================================
+
+METHOD 1: Use Tasks (Recommended - Always Works!)
+--------------------------------------------------
+1. Press Ctrl+Shift+P
+2. Type: Tasks: Run Task
+3. Select: Run AIDSYNC
+4. Done! Application starts.
+
+(No setup needed - uses Maven Wrapper automatically)
+
+================================================================================
+
+METHOD 2: Use Terminal (Simplest)
+----------------------------------
+1. Press Ctrl+` (backtick key) to open terminal
+2. Type: run.bat
+3. Press Enter
+4. Done! Application runs.
+
+================================================================================
+
+METHOD 3: Fix Run Button (If you need debugging)
+-------------------------------------------------
+1. Open PowerShell in project folder
+2. Run: powershell -ExecutionPolicy Bypass -File setup-ide-run.ps1
+3. CLOSE VS CODE COMPLETELY (File → Exit)
+4. REOPEN VS Code
+5. Press F5 or click "Run Java" button
+6. Should work now!
+
+================================================================================
+
+WHY THIS HAPPENS:
+================================================================================
+
+- run.bat works because it uses Maven Wrapper (handles JavaFX automatically)
+- VS Code Run Button needs launch.json with correct paths for YOUR machine
+- Current launch.json has paths from another machine → doesn't work
+
+================================================================================
+
+RECOMMENDATION:
+================================================================================
+
+Use METHOD 1 (Tasks) or METHOD 2 (Terminal) - they always work!
+
+Only use METHOD 3 if you need VS Code's debugging features.
+
+================================================================================
+
+For more details, see: VSCODE_SETUP.md or FIX_VSCODE_JAVAFX.md
+
+================================================================================
+

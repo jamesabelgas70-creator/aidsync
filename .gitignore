@@ -8,10 +8,12 @@ target/
 # IDE files
 .idea/
 *.iml
-.vscode/
+.vscode/launch.json
+.vscode/settings.json
 .settings/
 .project
 .classpath
+# Note: .vscode/tasks.json should be committed (works for all machines)
 
 # OS files
 .DS_Store

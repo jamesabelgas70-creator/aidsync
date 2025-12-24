@@ -1,0 +1,53 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run AIDSYNC",
+            "type": "shell",
+            "command": "${workspaceFolder}\\run.bat",
+            "windows": {
+                "command": "${workspaceFolder}\\run.bat"
+            },
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Compile AIDSYNC",
+            "type": "shell",
+            "command": "${workspaceFolder}\\mvnw.cmd",
+            "args": ["clean", "compile"],
+            "windows": {
+                "command": "${workspaceFolder}\\mvnw.cmd"
+            },
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "group": "build"
+        },
+        {
+            "label": "Run AIDSYNC (Maven)",
+            "type": "shell",
+            "command": "${workspaceFolder}\\mvnw.cmd",
+            "args": ["javafx:run"],
+            "windows": {
+                "command": "${workspaceFolder}\\mvnw.cmd"
+            },
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "group": "build"
+        }
+    ]
+}
+
